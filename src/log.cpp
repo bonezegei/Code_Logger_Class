@@ -24,7 +24,11 @@ void :Log::add(LogType type, const char *message){
             numberOfLogs++;
         }
         else{
-          //Push Back and Shift Here
+          //Push Front and Shift Here
+          for(int a=numberOfLogs-1; a>=0; a-=1){
+                log[a]=log[a-1];
+            }
+             add(0, type, message);
         }
     }
     else{
@@ -41,3 +45,11 @@ int Log::getNumberOfLogs(){
 LOG Log::getLog(int index){
     return log[index];
 }
+
+void Log::printAll(){
+    for(int a=0; a<numberOfLogs; a++){
+        printf("%s : %s \n", log[a].logTypeStr, log[a].msg);
+    }
+
+}
+
