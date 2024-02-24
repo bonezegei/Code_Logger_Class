@@ -17,24 +17,32 @@ void Log::add(int index, LogType type, const char *message){
 }
 
 void :Log::add(LogType type, const char *message){
-    if(numberOfLogs){
+//    if(numberOfLogs){
+//
+//        if(numberOfLogs<MAX_LOG){
+//            add(numberOfLogs, type, message);
+//            numberOfLogs++;
+//        }
+//        else{
+//
+//            for(int a=numberOfLogs-1; a>=0; a-=1){
+//                log[a]=log[a-1];
+//            }
+//             add(0, type, message);
+//        }
+//
+//    }
+//    else{
+//        add(numberOfLogs, type, message);
+//        numberOfLogs++;
+//    }
 
-        if(numberOfLogs<MAX_LOG){
-            add(numberOfLogs, type, message);
-            numberOfLogs++;
-        }
-        else{
-          //Push Front and Shift Here
-          for(int a=numberOfLogs-1; a>=0; a-=1){
-                log[a]=log[a-1];
-            }
-             add(0, type, message);
-        }
+    for(int a=numberOfLogs-1; a>=0; a-=1){
+        log[a]=log[a-1];
     }
-    else{
-        add(numberOfLogs, type, message);
-        numberOfLogs++;
-    }
+    add(0, type, message);
+    numberOfLogs++;
+
 }
 
 
@@ -47,7 +55,7 @@ LOG Log::getLog(int index){
 }
 
 void Log::printAll(){
-    for(int a=0; a<numberOfLogs; a++){
+    for(int a=0; a<numberOfLogs-1; a++){
         printf("%s : %s \n", log[a].logTypeStr, log[a].msg);
     }
 
