@@ -29,6 +29,7 @@ public:
 
     int  getNumberOfLogs();
     LOG  getLog(int index);
+    void printAll();
 
 private:
     const char *LogTypeStr[4]={"Unknown", "Warning", "Error", "Success"};
